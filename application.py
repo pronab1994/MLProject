@@ -45,20 +45,6 @@ def _log_request_time(response):
         pass
     return response
 
-
-# ============================================================
-# Health check (USED BY EB / DEBUGGING)
-# ============================================================
-@app.get("/health")
-def health():
-    return jsonify({"status": "ok"})
-
-
-@app.get("/ping")
-def ping():
-    return "pong"
-
-
 # ============================================================
 # Routes
 # ============================================================
@@ -118,4 +104,4 @@ def predict_datapoint():
         return render_template("home.html", results=None, error=str(e))
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", port = 5000, debug=True)
